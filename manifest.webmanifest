@@ -1,0 +1,15 @@
+{
+  "name": "SSC CGL 2027 English Master Trainer",
+  "short_name": "SSC English",
+  "description": "180-day SSC CGL Tier-I to Tier-II English reading, RC, Cloze and Arrangement trainer.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f7fb",
+  "theme_color": "#102a56",
+  "categories": [
+    "education",
+    "productivity"
+  ]
+}
