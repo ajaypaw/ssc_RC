@@ -28,6 +28,89 @@ footer{text-align:center;color:var(--muted);padding:30px}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
+<style>
+
+/* Mobile reading fix: keep the passage unobstructed */
+@media (max-width: 700px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header,
+  .header,
+  .topbar,
+  nav {
+    position: static !important;
+  }
+
+  header {
+    padding: 8px 10px !important;
+    min-height: 0 !important;
+  }
+
+  header h1,
+  .header h1,
+  .brand h1 {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  header .sub,
+  .header .sub,
+  .brand .sub {
+    font-size: 10px !important;
+    line-height: 1.25 !important;
+    margin-top: 2px !important;
+  }
+
+  header .actions,
+  .header .actions,
+  header .controls {
+    gap: 4px !important;
+  }
+
+  header button,
+  .header button,
+  header select,
+  .header select {
+    padding: 5px 7px !important;
+    font-size: 11px !important;
+  }
+
+  main,
+  .container,
+  .wrap {
+    padding-top: 8px !important;
+    margin-top: 0 !important;
+  }
+
+  .passage,
+  .passage-card,
+  .article,
+  .reading,
+  #passage {
+    margin-top: 6px !important;
+    padding-top: 10px !important;
+  }
+
+  .passage p,
+  .passage-card p,
+  .article p,
+  .reading p,
+  #passage p {
+    font-size: 17px !important;
+    line-height: 1.72 !important;
+  }
+
+  .tip,
+  .small,
+  .meta {
+    font-size: 12px !important;
+  }
+}
+
+</style>
 </head>
 <body>
 <header><div class="wrap">
