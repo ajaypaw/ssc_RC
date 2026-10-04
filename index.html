@@ -36,52 +36,61 @@ footer{text-align:center;color:var(--muted);padding:30px}
     overflow-x: hidden;
   }
 
-  header,
-  .header,
-  .topbar,
-  nav {
-    position: static !important;
-  }
-
+  /* Compact mobile header: title + subtitle + controls, but never sticky */
   header {
-    padding: 8px 10px !important;
+    position: static !important;
+    padding: 9px 10px 10px !important;
     min-height: 0 !important;
+    box-shadow: 0 2px 10px #0002;
   }
 
-  header h1,
-  .header h1,
-  .brand h1 {
-    font-size: 16px !important;
-    line-height: 1.2 !important;
+  header .wrap {
+    width: 100%;
+    padding: 0 !important;
     margin: 0 !important;
   }
 
-  header .sub,
-  .header .sub,
-  .brand .sub {
-    font-size: 10px !important;
-    line-height: 1.25 !important;
-    margin-top: 2px !important;
+  header h1 {
+    font-size: 15px !important;
+    line-height: 1.2 !important;
+    margin: 0 0 3px !important;
+    white-space: normal !important;
   }
 
-  header .actions,
-  .header .actions,
-  header .controls {
-    gap: 4px !important;
+  header .sub {
+    font-size: 9.5px !important;
+    line-height: 1.3 !important;
+    margin: 0 0 7px !important;
+    opacity: .92;
   }
 
-  header button,
-  .header button,
-  header select,
-  .header select {
-    padding: 5px 7px !important;
+  header .tools {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 5px !important;
+    width: 100%;
+  }
+
+  header .tools select,
+  header .tools button {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 32px !important;
+    padding: 5px 6px !important;
     font-size: 11px !important;
+    border-radius: 7px !important;
+    box-sizing: border-box !important;
   }
 
+  header .tools button {
+    font-weight: 700;
+  }
+
+  /* Passage starts immediately after the compact header. */
   main,
   .container,
   .wrap {
-    padding-top: 8px !important;
+    padding-top: 6px !important;
     margin-top: 0 !important;
   }
 
@@ -90,8 +99,8 @@ footer{text-align:center;color:var(--muted);padding:30px}
   .article,
   .reading,
   #passage {
-    margin-top: 6px !important;
-    padding-top: 10px !important;
+    margin-top: 4px !important;
+    padding-top: 8px !important;
   }
 
   .passage p,
@@ -109,8 +118,325 @@ footer{text-align:center;color:var(--muted);padding:30px}
     font-size: 12px !important;
   }
 }
-
 </style>
+
+<style id="mobile-study-ui">
+@media (max-width:700px){
+  :root{
+    --m-bg:#f5f7fb;
+    --m-card:#fff;
+    --m-text:#14213d;
+    --m-muted:#667085;
+    --m-border:#e5e7eb;
+  }
+
+  html{scroll-behavior:smooth}
+  body{
+    margin:0!important;
+    background:var(--m-bg)!important;
+    overflow-x:hidden!important;
+    -webkit-text-size-adjust:100%;
+  }
+
+  /* Header becomes a compact app dashboard, never sticky. */
+  header{
+    position:static!important;
+    padding:14px 14px 12px!important;
+    border-radius:0 0 18px 18px!important;
+    box-shadow:none!important;
+  }
+  header .wrap{
+    width:100%!important;
+    max-width:none!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  header h1{
+    font-size:18px!important;
+    line-height:1.2!important;
+    margin:0 0 5px!important;
+    letter-spacing:-.2px;
+  }
+  header .sub{
+    font-size:10px!important;
+    line-height:1.4!important;
+    margin:0!important;
+  }
+
+  header .tools{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:7px!important;
+    width:100%!important;
+    margin-top:11px!important;
+  }
+  header .tools select,
+  header .tools button{
+    width:100%!important;
+    min-width:0!important;
+    min-height:38px!important;
+    box-sizing:border-box!important;
+    border-radius:10px!important;
+    padding:7px 8px!important;
+    font-size:12px!important;
+  }
+
+  /* Hide desktop dashboard/sidebar. */
+  main.wrap{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:10px 10px 76px!important;
+    box-sizing:border-box!important;
+  }
+  aside.side{display:none!important}
+  section#app{
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  /* Cards become clean mobile study sections. */
+  #app .card{
+    width:100%!important;
+    box-sizing:border-box!important;
+    border-radius:15px!important;
+    margin-bottom:10px!important;
+    box-shadow:0 3px 12px rgba(16,24,40,.05)!important;
+  }
+
+  #app h2{font-size:19px!important;line-height:1.3!important}
+  #app h3{font-size:15px!important}
+  #app .small,#app .meta{
+    font-size:12px!important;
+    line-height:1.45!important;
+  }
+
+  /* Long-passage reading view. */
+  .passage,.passage-card,.article,.reading,#passage{
+    margin:0!important;
+    padding:15px!important;
+    border-radius:15px!important;
+  }
+  .passage p,.passage-card p,.article p,.reading p,#passage p{
+    font-size:17px!important;
+    line-height:1.78!important;
+    letter-spacing:.02px!important;
+    margin:0 0 14px!important;
+  }
+  .passage p:last-child,.passage-card p:last-child,
+  .article p:last-child,.reading p:last-child,#passage p:last-child{
+    margin-bottom:0!important;
+  }
+
+  /* Touch-friendly question choices. */
+  .option,.options button,.choices button,button.option{
+    min-height:46px!important;
+    padding:10px 12px!important;
+    border-radius:10px!important;
+    font-size:14px!important;
+    line-height:1.4!important;
+    text-align:left!important;
+  }
+
+  .tip{
+    border-radius:12px!important;
+    font-size:12px!important;
+    line-height:1.5!important;
+  }
+
+  input,select,textarea,button{font-size:16px!important}
+  header select,header button{font-size:12px!important}
+
+  table{
+    display:block!important;
+    width:100%!important;
+    overflow-x:auto!important;
+  }
+
+  footer{
+    font-size:10px!important;
+    padding:12px 10px 20px!important;
+  }
+
+  /* Persistent reading navigation, away from passage text. */
+  #mobileStudyBar{
+    position:fixed;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    z-index:50;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    padding:6px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(10px);
+    border:1px solid var(--m-border);
+    border-radius:14px;
+    box-shadow:0 8px 24px rgba(16,24,40,.14);
+  }
+  #mobileStudyBar button{
+    min-height:38px!important;
+    border:0;
+    border-radius:9px;
+    background:#f1f4f9;
+    color:var(--m-text);
+    font-weight:700;
+    font-size:12px!important;
+  }
+}
+@media (min-width:701px){#mobileStudyBar{display:none}}
+</style>
+
+
+<style id="desktop-study-ui">
+/* Laptop/Desktop study workspace */
+@media (min-width:701px){
+  :root{
+    --d-bg:#f4f7fb;
+    --d-card:#ffffff;
+    --d-text:#14213d;
+    --d-muted:#667085;
+    --d-border:#e3e8f0;
+  }
+
+  body{
+    margin:0!important;
+    background:var(--d-bg)!important;
+    color:var(--d-text);
+    overflow-x:hidden;
+  }
+
+  header{
+    position:sticky!important;
+    top:0!important;
+    z-index:40!important;
+    padding:16px 28px!important;
+    box-shadow:0 2px 12px rgba(16,24,40,.08)!important;
+  }
+
+  header .wrap{
+    max-width:1280px!important;
+    margin:0 auto!important;
+  }
+
+  header h1{
+    font-size:24px!important;
+    line-height:1.2!important;
+    margin-bottom:5px!important;
+  }
+
+  header .sub{
+    font-size:12px!important;
+    line-height:1.4!important;
+  }
+
+  header .tools{
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+    margin-top:12px!important;
+  }
+
+  header .tools select,
+  header .tools button{
+    min-height:38px!important;
+    border-radius:9px!important;
+    padding:7px 12px!important;
+    font-size:13px!important;
+  }
+
+  main.wrap{
+    display:grid!important;
+    grid-template-columns:240px minmax(0, 1fr)!important;
+    gap:20px!important;
+    width:min(1280px, calc(100% - 48px))!important;
+    max-width:1280px!important;
+    margin:22px auto 40px!important;
+    padding:0!important;
+    box-sizing:border-box!important;
+  }
+
+  aside.side{
+    display:block!important;
+    position:sticky!important;
+    top:145px!important;
+    align-self:start!important;
+    max-height:calc(100vh - 170px)!important;
+    overflow:auto!important;
+  }
+
+  section#app{
+    min-width:0!important;
+    width:100%!important;
+  }
+
+  #app .card{
+    border-radius:16px!important;
+    border:1px solid var(--d-border)!important;
+    box-shadow:0 4px 18px rgba(16,24,40,.055)!important;
+    margin-bottom:16px!important;
+  }
+
+  #app h2{
+    font-size:24px!important;
+    line-height:1.3!important;
+  }
+
+  #app h3{
+    font-size:17px!important;
+  }
+
+  #app .small,#app .meta{
+    font-size:13px!important;
+  }
+
+  .passage,
+  .passage-card,
+  .article,
+  .reading,
+  #passage{
+    padding:24px!important;
+    border-radius:16px!important;
+  }
+
+  .passage p,
+  .passage-card p,
+  .article p,
+  .reading p,
+  #passage p{
+    font-size:18px!important;
+    line-height:1.82!important;
+    max-width:900px!important;
+    margin-bottom:18px!important;
+  }
+
+  .option,
+  .options button,
+  .choices button,
+  button.option{
+    min-height:46px!important;
+    padding:11px 14px!important;
+    border-radius:10px!important;
+    font-size:14px!important;
+    line-height:1.45!important;
+    text-align:left!important;
+  }
+
+  .tip{
+    font-size:13px!important;
+    line-height:1.55!important;
+    border-radius:12px!important;
+    padding:13px!important;
+  }
+
+  #mobileStudyBar{
+    display:none!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap">
@@ -194,6 +520,12 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
+
+
+<div id="mobileStudyBar" aria-label="Mobile study navigation">
+  <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+  <button type="button" onclick="document.getElementById('app')?.scrollIntoView({behavior:'smooth'})">📖 Read</button>
+</div>
 
 </body>
 </html>
